@@ -17,3 +17,7 @@ def set_driver_options(webdriver):
     options.add_argument("disable-blink-features=AutomationControlled")
     
     return options
+
+def clean_world_temp_text(text):
+    """This function cleans text of world temperature taken from website."""
+    return float(text.split(": ")[1])
