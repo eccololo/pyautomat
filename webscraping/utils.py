@@ -1,5 +1,8 @@
-def set_driver_options(webdriver):
+def set_driver_options(webdriver, headless):
     options = webdriver.ChromeOptions()
+
+    if headless:
+         options.add_argument("--headless")
 
     # Disable showing bars with additional info.
     options.add_argument("disable-infobars")
