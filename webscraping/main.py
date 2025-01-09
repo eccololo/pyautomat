@@ -66,15 +66,17 @@ def get_dynamic_data_from_pythonhow_homepage(driver):
     element = driver.find_element(By.XPATH, "/html/body/div/h1[2]/div")
     return clean_world_temp_text(element.text)
 
-def save_dynamic_data_from_pythonhow_to_file(driver):
-    dynamic_data = str(get_dynamic_data_from_pythonhow_homepage(driver))
+def write_text_to_file_with_timestamp(text):
     datetime_now = str(datetime.datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))
     file_name = f"{datetime_now}.txt"
     file_path = os.path.join(os.getcwd(), "webscraping", file_name)  
-    
     with open(file_path, "w") as f:
-        f.write(dynamic_data)
+        f.write(text)
 
+def save_dynamic_data_from_pythonhow_to_file(driver):
+    dynamic_data = str(get_dynamic_data_from_pythonhow_homepage(driver))
+    write_text_to_file_with_timestamp(dynamic_data)
+  
 
 if __name__ == "__main__":
     driver = login_to_pythonhow_and_go_to_home_page()
