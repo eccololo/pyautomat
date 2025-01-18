@@ -20,18 +20,18 @@ def get_driver(target_url):
     return driver
 
 def get_aristotle_quote_from_target_website():
-    driver = get_driver(TARGET_URL)
+    driver = get_driver(TARGET_URL[0])
     element = driver.find_element(By.XPATH, "/html/body/div[1]/div/h1[1]")
     return element
 
 def get_world_temperature_from_target_website():
-    driver = get_driver(TARGET_URL)
+    driver = get_driver(TARGET_URL[0])
     time.sleep(5)
     element = driver.find_element(By.XPATH, "/html/body/div[1]/div/h1[2]")
     return clean_world_temp_text(element.text)
 
 def login_to_pythonhow_website_and_print_url():
-    target_url = TARGET_URL
+    target_url = TARGET_URL[0]
     target_url = target_url + "/login"
     driver = get_driver(target_url)
     driver.find_element(By.ID, "id_username").send_keys(APP_USERNAME)
@@ -42,7 +42,7 @@ def login_to_pythonhow_website_and_print_url():
     print(driver.current_url)
 
 def login_to_pythonhow_and_get_dynamic_data():
-    target_url = TARGET_URL
+    target_url = TARGET_URL[0]
     target_url = target_url + "/login"
     driver = get_driver(target_url)
     driver.find_element(By.ID, "id_username").send_keys(APP_USERNAME)
@@ -53,7 +53,7 @@ def login_to_pythonhow_and_get_dynamic_data():
     return clean_world_temp_text(element.text)
 
 def login_to_pythonhow_and_go_to_home_page():
-    target_url = TARGET_URL
+    target_url = TARGET_URL[0]
     target_url = target_url + "/login"
     driver = get_driver(target_url)
     driver.find_element(By.ID, "id_username").send_keys(APP_USERNAME)
